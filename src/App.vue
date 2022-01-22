@@ -1,19 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img class="poke_logo" src="@/assets/pokemon_logo.png" alt="pokemon logo" />
+    <form>
+      <label for="txt_nombre">Nombre: </label>
+      <input type="text" name="txt_nombre" id="txt_nombre" v-model="nombrePokemon" />
+      <button type="submit" @click.prevent="searchPokemon">Buscar</button>
+    </form>
+    <PokeDetails :detallePokemon="detallePokemon" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import PokeDetails from "@/components/PokeDetails";
+import { getPokemonDetailByName } from "@/api/FetchPokeApi";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PokeDetails,
+  },
+  data() {
+    return {
+      nombrePokemon: "",
+      detallePokemon: {},
+    };
+  },
+  methods: {
+    async searchPokemon() {
+      const { nombrePokemon } = this;
+      this.detallePokemon = await getPokemonDetailByName(nombrePokemon);
+    },
+  },
+  async created() {
+    this.detallePokemon = await getPokemonDetailByName("pikachu");
+  },
+};
 </script>
 
 <style>
@@ -24,5 +44,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.poke_logo {
+  width: 25%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 25%;
 }
 </style>

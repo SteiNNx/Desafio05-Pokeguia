@@ -1,19 +1,11 @@
-# 05-pokeguia
+# **Desafio PokeGuia**
+Desafio 05, Modulo 04 VueJS
 
-## Project setup
-```
-npm install
-```
+[Ver Sitio(Vercel)](https://desafio04-todo-list-with-props.vercel.app/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## **Capitulos**
+* VueCLI.
+* Parent y Child Component.
+* Props Component.
+* Fetch, asyn await
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
